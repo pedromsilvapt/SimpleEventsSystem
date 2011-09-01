@@ -1,0 +1,923 @@
+/*
+Theme Name: Paper Wall
+Theme URI: http://smashingmagazine.com/
+Description: Paper Wall Theme by <a href="http://indeziner.com">INDEZINER.COM</a> &amp; <a href="http://smashingmagazine.com">Smashing Magazine</a>.
+Version: 1.0
+Author: INDEZINER
+Author URI: http://indeziner.com
+Tags: paperwork, style, brown, yellow, orange, two column, widgets
+
+The CSS, XHTML is released under GPL:
+http://www.opensource.org/licenses/gpl-license.php
+
+*/
+
+/* Begin Typography & Colors */
+html{
+background:url(images/html_bg.jpg) repeat;
+}
+body {
+font-size:12px;
+font-family:Georgia, "Times New Roman", Times, serif;
+background:url(images/top_bg.jpg) no-repeat center top;
+color: #825a2d;
+padding:0px;
+margin:0px auto auto auto;
+}
+/*	Begin Headers */
+h1 {
+padding:0px;
+margin:0;
+}
+h2 {
+margin:0;
+padding:0px;
+color:#825a2d;
+}
+h2.pagetitle {
+margin:0px;
+text-align: left;
+font-size:20px;
+color:#FDB032;
+padding:0 0 20px 90px;
+}
+h3 {
+padding: 0;
+margin:0px;
+}
+h3#comments {
+padding: 0;
+clear:both;
+margin:20px 0 30px 0px ;
+padding:0 0 5px 0;
+border-bottom:1px #EFE7D1 solid;
+}
+
+/* End Headers */
+
+a{
+text-decoration:none;
+color:#CF880C;
+}
+a:hover {
+color: #876431;
+text-decoration: underline;
+}
+small {
+font-family: Arial, Helvetica, Sans-Serif;
+font-size: 0.9em;
+line-height: 1.5em;
+}
+.read_more{
+width:97px;
+height:33px;
+float:right;
+line-height:43px;
+padding:0 0 0 7px;
+background:url(images/pencil_bg.gif) no-repeat center;
+}
+.read_more a{
+text-decoration:none;
+}
+
+
+
+#main_container{
+width:960px;
+margin:auto;
+}
+
+#header {
+height:176px;
+}
+.logo{
+padding:55px 0 0 20px;
+}
+.center_content{
+width:960px;
+height:auto;
+background:url(images/content_center.gif) repeat-y center;
+}
+.center_content_top{
+width:960px;
+height:auto;
+background:url(images/content_top.jpg) no-repeat center top;
+}
+.center_content_bottom{
+width:960px;
+height:auto;
+background:url(images/content_bottom.jpg) no-repeat center bottom;
+}
+
+#content {
+padding:30px 0 30px 0;
+}
+#content-page {
+width:600px;
+float:left;
+padding:30px 0 30px 50px;
+clear:both;
+}
+.narrowcolumn {
+float:left;
+padding:10px 0 20px 0px;
+margin: 0px 0 0;
+width:660px;
+clear:both;
+}
+/*-----------------Begin Sidebar---------------------*/
+#sidebar
+{
+width:260px;
+float:right;
+padding:0 15px 40px 0;
+}
+#sidebar h2{
+width:237px;
+height:28px;
+text-transform:uppercase;
+font-size:14px;
+font-weight:bold;
+color:#411a0a;
+padding:42px 0 0 0;
+margin:15px 0 0 0;
+text-align:center;
+background:url(images/sidebar_top.jpg) no-repeat center bottom;
+}
+#sidebar ul, #sidebar ul ol {
+width:237px;
+margin: 0;
+padding:0;
+list-style:none;
+}
+
+#sidebar ul li {
+list-style:none;
+margin:0;
+padding:0;
+}
+#sidebar ul li ul{
+padding:0px 0 25px 0;
+margin:0px;
+width:237px;
+background:url(images/sidebar_bottom.jpg) no-repeat center bottom;
+}
+#sidebar ul li ul li div{
+padding:0px;
+margin:0px;
+width:237px;
+background:url(images/sidebar_bottom.jpg) no-repeat center bottom;
+}
+#sidebar ul li ul li{
+list-style:none;
+width:210px;
+margin:0px 0 0 20px;
+line-height:22px;
+padding:4px 0 0px 0;
+}
+
+#sidebar ul li ul li a{
+color:#695321;
+background:url(images/checked.gif) no-repeat left;
+padding:0 0 0 15px;
+}
+
+#sidebar ul li ul li.recentcomments a{
+color:#695321;
+background:none;
+text-decoration:underline;
+padding:0 0 0 15px;
+color:#DF8D0D;
+}
+#sidebar ul li.widget_tag_cloud{
+padding:0px 0 25px 0;
+background:url(images/sidebar_bottom.jpg) no-repeat center bottom;
+}
+#sidebar ul li.widget_tag_cloud a{
+color:#695321;
+background:none;
+text-decoration:underline;
+padding:0 0 0 15px;
+line-height:20px;
+color:#DF8D0D;
+}
+
+
+
+a.sidebar_banner{
+clear:both;
+display:block;
+padding:20px 0 10px 0;
+}
+/* Begin Form Elements */
+.search_tab{
+height:70px;
+padding:23px 0 0 35px;
+}
+#searchform {
+margin:0px;
+padding:0px;
+}
+input.search_input{
+width:153px;
+height:22px;
+background:none;
+border:none;
+color:#e5c246;
+}
+#sidebar #searchsubmit {
+padding:3px 0 0 3px;
+}
+.st-tag-cloud{
+padding:5px 0 0 15px;
+line-height:22px;
+}
+/*-------------------------menu---------------------------------*/
+.menu ul{
+padding:0px 0 0 37px;
+margin:0px;
+display:block;
+list-style:none;
+}
+.menu ul li{
+float:left;
+}
+.menu ul li a{
+color:#FFFFFF;
+font-size:12px;
+float:left;
+height:23px;
+line-height:23px;
+padding:0 10px 0 10px;
+margin:0 2px 0 2px;
+display:block;
+text-decoration:none;
+font-weight:bold;
+text-transform:uppercase;
+}
+.menu ul li.current_page_item a{
+color:#64431e;
+font-size:12px;
+float:left;
+height:23px;
+line-height:23px;
+padding:0 10px 0 10px;
+margin:0 2px 0 2px;
+display:block;
+text-decoration:none;
+font-weight:bold;
+text-transform:uppercase;
+background:url(images/menu_link_bg.gif) repeat-x center;
+}
+
+.menu ul li a:hover{
+background:url(images/menu_link_bg.gif) repeat-x center;
+color:#64431e;
+}
+
+/*--------------------------post style-----------------------*/
+.post {
+margin:0px;
+float:left;
+padding:0px 0 20px 0;
+text-align: justify;
+background:url(images/post_bg.gif) no-repeat left center;
+}
+.post-page{
+margin:0px;
+float:left;
+padding:0px 0 20px 0;
+text-align: justify;
+line-height:20px;
+}
+.post_date{
+width:74px;
+height:65px;
+float:left;
+text-align:center;
+padding:17px 0 0 0;
+background:url(images/date_bg.png) no-repeat center;
+}
+.post h2 a{
+color:#825a2d;
+float: none;
+font-size:24px;
+font-weight:bold;
+width:440px;
+padding:10px 0 10px 0;
+text-decoration:none;
+}
+.post img{
+border:2px #ececec solid;
+}
+.post .entry p{
+padding:5px 0 5px 0;
+margin:0px;
+line-height:19px;
+clear:both;
+}
+span.day{
+font-size:18px;
+color:#d82a18;
+}
+span.month{
+font-size:12px;
+color:#547cc1;
+}
+span.year{
+font-size:11px;
+color:#4a4a4a;
+}
+.post_content{
+width:560px;
+float:left;
+padding:0 0 0 15px;
+}
+.comm{
+padding:20px 0 0 0;
+}
+.comm a{
+float:right;
+display:block;
+text-decoration:none;
+color:#4f3813;
+background:url(images/comm_icon.gif) no-repeat left;
+padding:0 0 0 20px;
+}
+.postmetadata {
+width:400px;
+float:left;
+clear: both;
+}
+
+.new_pagination{
+width:612px;
+height:56px;
+float:left;
+margin:0 0 50px 20px;
+background:url(images/pagination_bg.gif) no-repeat center;
+}
+
+
+.widecolumn .entry p {
+font-size: 1.05em;
+}
+
+
+
+.widecolumn {
+line-height: 1.6em;
+}
+
+
+.thread-alt {
+background-color: #f8f8f8;
+}
+.thread-even {
+background-color: white;
+}
+.depth-1 {
+border: 1px solid #ddd;
+}
+
+.even, .alt {
+
+border-left: 1px solid #ddd;
+}
+
+
+
+
+
+
+.sticky {
+background: #f7f7f7;
+padding: 0 10px 10px;
+}
+.sticky h2 {
+padding-top: 10px;
+}
+/*------------------------------comments_content---------------------------------*/
+/* Begin Comments*/
+.alt {
+margin: 0;
+padding: 10px;
+}
+
+.commentlist {
+padding: 0;
+margin:0px;
+text-align: justify;
+}
+
+.commentlist li {
+margin: 15px 0 10px;
+padding: 5px 5px 10px 10px;
+list-style: none;
+
+}
+.commentlist li ul li { 
+margin-right: -5px;
+margin-left: 10px;
+}
+
+.commentlist p {
+margin: 10px 5px 10px 0;
+}
+.children { padding: 0; }
+
+#commentform p {
+margin: 5px 0;
+}
+
+.nocomments {
+text-align: center;
+margin: 0;
+padding: 0;
+}
+
+.commentmetadata {
+margin: 0;
+display: block;
+}
+
+#commentform input {
+width:322px;
+height:27px;
+background:url(images/input_bg.gif) no-repeat center;
+border:none;
+padding:10px 0 0 7px;
+margin: 5px 5px 1px 0;
+}
+
+#commentform {
+margin: 5px 10px 0 0;
+}
+#commentform textarea {
+width:596px;
+height:150px;
+border:none;
+background:url(images/textarea_bg.gif) no-repeat center;
+padding:10px 0 0 7px;
+}
+#respond{
+padding:20px 0 50px 0;
+}
+#respond:after {
+content: "."; 
+display: block; 
+height: 0; 
+clear: both; 
+visibility: hidden;
+}
+#commentform #submit {
+width:143px;
+height:39px;
+border:none;
+cursor:pointer;
+background:none;
+margin:0;
+float: right;
+}
+/* End Comments */
+.comments_content{
+padding:0 10px 0 50px;
+}
+
+.commentlist li {
+font-weight: bold;
+background-color:#FFFBEF;
+border-color:#EFE7D1;
+}
+
+.commentlist li .avatar { 
+float: right;
+border: 1px solid #EFE7D1;
+padding: 2px;
+background: #fff;
+}
+
+.commentlist cite, .commentlist cite a {
+font-weight: bold;
+font-style: normal;
+font-size: 1.1em;
+}
+
+.commentlist p {
+font-weight: normal;
+line-height: 1.5em;
+text-transform: none;
+}
+
+#commentform p {
+font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif;
+}
+
+.commentmetadata {
+font-weight: normal;
+}
+
+
+small, .nocomments, .postmetadata, blockquote, strike {
+color: #777;
+}
+
+code {
+font: 1.1em 'Courier New', Courier, Fixed;
+}
+
+acronym, abbr, span.caps
+{
+font-size: 0.9em;
+letter-spacing: .07em;
+}
+
+
+
+#wp-calendar #prev a, #wp-calendar #next a {
+font-size: 9pt;
+}
+
+#wp-calendar a {
+text-decoration: none;
+}
+
+#wp-calendar caption {
+font: bold 1.3em 'Lucida Grande', Verdana, Arial, Sans-Serif;
+text-align: center;
+}
+
+#wp-calendar th {
+font-style: normal;
+text-transform: capitalize;
+}
+/* End Typography & Colors */
+
+
+
+
+.widecolumn {
+padding: 10px 0 20px 0;
+margin: 5px 0 0 150px;
+width: 450px;
+}
+
+
+
+
+
+.widecolumn .post {
+margin: 0;
+}
+
+
+.widecolumn .postmetadata {
+margin: 30px 0;
+}
+
+.widecolumn .smallattachment {
+text-align: center;
+float: left;
+width: 128px;
+margin: 5px 5px 5px 0px;
+}
+
+.widecolumn .attachment {
+text-align: center;
+margin: 5px 0px;
+}
+
+
+
+.clear {
+clear: both;
+}
+/*-----------------------------footer----------------------------------*/
+#footer {
+width:100%;
+height:185px;
+padding: 0;
+margin: 0;
+clear: both;
+background:url(images/footer_bg.jpg) no-repeat center top;
+}
+.footer_content{
+width:960px;
+margin:auto;
+}
+.footer_logos{
+width:242px;
+height:114px;
+float:left;
+background:url(images/footer_logos.png) no-repeat right top;
+padding:0 0 0 190px;
+}
+a.indeziner{
+width:108px;
+height:27px;
+display:block;
+margin:2px 0 0 50px;
+}
+a.wordpress{
+width:108px;
+height:27px;
+display:block;
+margin:35px 0 0 5px;
+float:left;
+}
+a.smashingmagazine{
+width:107px;
+height:45px;
+display:block;
+float:right;
+margin:30px 0 0 0px;
+}
+.footer_copyright{
+width:960px;
+font-size:11px;
+clear:both;
+text-align:center;
+padding:40px 0 0 0;
+color:#FFFFFF;
+}
+.footer_copyright a{
+color:#FFFFFF;
+}
+/*-------------------------footer-menu---------------------------------*/
+.footer_menu ul{
+padding:10px 10px 0 0;
+margin:0px;
+display:block;
+list-style:none;
+float:right;
+}
+.footer_menu ul li{
+float:left;
+}
+.footer_menu ul li a{
+color:#FFFFFF;
+font-size:11px;
+float:left;
+height:23px;
+line-height:23px;
+padding:0 10px 0 10px;
+margin:0px;
+display:block;
+text-decoration:none;
+font-weight:bold;
+text-transform:uppercase;
+}
+.footer_menu ul li.current_page_item a{
+color:#fff;
+text-decoration:underline;
+font-size:11px;
+float:left;
+height:23px;
+line-height:23px;
+padding:0 10px 0 10px;
+margin:0px;
+display:block;
+font-weight:bold;
+text-transform:uppercase;
+}
+
+.footer_menu ul li a:hover{
+color:#64431e;
+}
+.footer_share_box{
+width:400px;
+float:right;
+padding:20px 20px 0 0;
+text-align:right;
+}
+.footer_share_box a{
+padding:0 0 0 10px;
+}
+
+
+
+/* End Structure */
+
+
+
+
+
+
+
+/* Begin Images */
+p img {
+padding: 0;
+max-width: 100%;
+}
+
+/*	Using 'class="alignright"' on an image will (who would've
+thought?!) align the image to the right. And using 'class="centered',
+will of course center the image. This is much better than using
+align="center", being much more futureproof (and valid) */
+
+img.centered {
+display: block;
+margin-left: auto;
+margin-right: auto;
+border:2px #ececec solid;
+}
+
+img.alignright {
+padding: 4px;
+margin: 0 0 2px 7px;
+display: inline;
+}
+
+img.alignleft {
+padding: 4px;
+margin: 0 7px 2px 0;
+display: inline;
+}
+
+.alignright {
+float: right;
+}
+
+.alignleft {
+float: left;
+padding:0 0 0 80px;
+}
+/* End Images */
+
+
+
+/* Begin Lists
+
+Special stylized non-IE bullets
+Do not work in Internet Explorer, which merely default to normal bullets. */
+
+html>body .entry ul {
+margin-left: 0px;
+padding: 0 0 0 30px;
+list-style: none;
+padding-left: 10px;
+text-indent: -10px;
+}
+
+html>body .entry li {
+margin: 7px 0 8px 10px;
+}
+
+
+.entry ol {
+padding: 0 0 0 35px;
+margin: 0;
+}
+
+.entry ol li {
+margin: 0;
+padding: 0;
+}
+
+.postmetadata ul, .postmetadata li {
+display: inline;
+list-style-type: none;
+list-style-image: none;
+}
+
+
+/* End Entry Lists */
+
+
+
+
+
+.entry form { /* This is mainly for password protected posts, makes them look better. */
+text-align:center;
+}
+
+select {
+width: 130px;
+}
+
+/* Begin Calendar */
+#wp-calendar {
+empty-cells: show;
+margin: 10px auto 0;
+width: 155px;
+}
+
+#wp-calendar #next a {
+padding-right: 10px;
+text-align: right;
+}
+
+#wp-calendar #prev a {
+padding-left: 10px;
+text-align: left;
+}
+
+#wp-calendar a {
+display: block;
+}
+
+#wp-calendar caption {
+text-align: center;
+width: 100%;
+}
+
+#wp-calendar td {
+padding: 3px 0;
+text-align: center;
+}
+
+#wp-calendar td.pad:hover { /* Doesn't work in IE */
+background-color: #fff; }
+/* End Calendar */
+
+
+
+/* Begin Various Tags & Classes */
+acronym, abbr, span.caps {
+cursor: help;
+}
+
+acronym, abbr {
+border-bottom: 1px dashed #999;
+}
+
+blockquote {
+margin: 15px 30px 0 10px;
+padding-left: 20px;
+border-left: 5px solid #ddd;
+}
+
+blockquote cite {
+margin: 5px 0 0;
+display: block;
+}
+
+.center {
+text-align: center;
+}
+
+.hidden {
+display: none;
+}
+
+.screen-reader-text {
+position: absolute;
+left: -1000em;
+}
+
+hr {
+display: none;
+}
+
+a img {
+border: none;
+}
+
+.navigation {
+display: block;
+text-align: center;
+margin-top: 20px;
+margin-bottom:30px;
+}
+/* End Various Tags & Classes*/
+
+
+
+/* Captions */
+.aligncenter,
+div.aligncenter {
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
+.wp-caption {
+border: 1px solid #ddd;
+text-align: center;
+background-color: #f3f3f3;
+padding-top: 4px;
+margin: 10px;
+-moz-border-radius: 3px;
+-khtml-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+}
+
+.wp-caption img {
+margin: 0;
+padding: 0;
+border: 0 none;
+}
+
+.wp-caption p.wp-caption-text {
+font-size: 11px;
+line-height: 17px;
+padding: 0 4px 5px;
+margin: 0;
+}
+/* End captions */
+
+
+/* "Daisy, Daisy, give me your answer do. I'm half crazy all for the love of you.
+It won't be a stylish marriage, I can't afford a carriage.
+But you'll look sweet upon the seat of a bicycle built for two." */

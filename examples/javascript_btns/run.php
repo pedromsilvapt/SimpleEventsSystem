@@ -1,0 +1,30 @@
+<?php
+require("..\..\Events.php");
+
+if (!defined(IS_AUTH)){
+	exit;
+}
+
+//Se a variável $_GET["event"] não estiver declarada, termina a execução da página.
+if (!isset($_GET["event"])){
+	echo "Não foi definido nenhum evento.";
+	exit;
+}
+
+//Define algumas configurações para não ser necessário anexar a função.
+Events::setConf("Auto_run", true);
+Events::setConf("Auto_index", true);
+
+//Declara uma função anexada ao clique do botão
+function update_file_handles_html_buttons_click_btn_sample (){
+	//Vai buscar o número de clicks que o botão já tem
+	$number_clicks = file_get_contents("clicks.txt");
+	
+	//Escreve outra vez para o ficheiro adicionando um clique
+	file_put_contents("clicks.txt", $number_clicks + 1);
+	echo $number_clicks + 1;
+}
+
+//Corre todos os eventos associados ao clique do botão.
+Events::Run($_GET["event"]);
+?>

@@ -1,0 +1,320 @@
+====== PHP SimpleEventsSystem ======
+Esta classe permite usar eventos em PHP. Anexam-se as funções a determinado evento, e estas serão executadas assim que o evento for chamado. Podem fazer o download dela [[http://www.mediafire.com/?koxnmyfym4i|aqui]].
+
+===== Exemplo =====
+<code php>
+<?php
+//Inclui a classe
+require("Events.php");
+
+
+function function_1 (){
+    echo "Function_1 executada";
+}
+
+//Adiciona uma função a um evento. Não é preciso declarar o evento, pois se ele não existir a classe cria-o automaticamente.
+Events::Attach("system.core.echo", "function_1");
+
+echo "1";
+//Corre todos os eventos anexados ao evento "system.core.echo"
+Events::Run("system.core.echo");
+
+?>
+</code>
+
+
+===== Instanciar =====
+Não é preciso. Basta usar a classe estática **Events**. :)
+
+===== Configurações =====
+As configurações são bastante simples. Existem três funções, uma para alterar uma configuração, uma para verificar se a variável de configuração existe e outra para ler o valor actual.
+
+==== confExists ====
+Esta função retorna true caso a variável de configuração exista e false caso não exista.
+<note>
+**boolean** confExists(**string** $var_name)
+  * **var_name** - O nome da variável de configuração a verificar se existe.
+</note>
+
+==== getConf ====
+Esta função retorna o valor actual de uma variável de configuração.
+<note>
+* getConf(**string** $var_name)
+  * **var_name** - O nome da variável de uma variável de configuração para obter
+</note>
+
+Se a variável de configuração não existir, a função retorna false.
+
+==== setConf ====
+
+Esta função altera o valor de uma variável de configuração.
+<note>
+* setConf(**string** $var_name, **string** $var_value)
+  * **var_name** - O nome da variável de configuração a obter
+  * **var_value** - O valor a colocar na variável de configuração
+</note>
+
+Se a variável de configuração não existir, a função retorna false.
+
+==== Lisa de Variáveis de Configuração ====
+
+=== Auto_run ===
+**Tipo:** Boolean \\
+**Dependências:** //Nenhuma// \\
+Se esta variável estiver a true, ao executar a função **Run()** para um determinado evento, e função vai também procurar funções definidas pelo utilizador que obedeçam à seguinte estrutura:
+<code php>
+//A parte nome_da_funcao é completamente personalizavel.
+function nome_da_funcao_handles_nome_do_evento(){}
+</code>
+
+=== Auto_index ===
+**Tipo:** Boolean \\
+**Dependências:** Variável **Auto_run** = __true__
+Se estiver a true, para além de executar as funções encontradas, também as coloca na lista do array.
+
+===== API =====
+==== Attach ====
+Esta função anexa uma função a um evento.
+<note>
+**boolean** Attach (**string** $event_name, **string**|**array** $function_name, [**boolean** $verify_function = false]) \\ \\
+  * **$event_name** - O nome do evento a que se quer anexar a função. Se o evento não existir, a class criá-lo-à automáticamente.
+  * **$function_name** - O nome da função a anexar. Pode ser um array unidimensional.
+  * **$verify_function** - Se estiver a true, apenas deixa adicionar funções que já estejam declaradas. Se estiver a false, deixa passar todas. Se no momento em que o evento correr, a função ainda não estiver declarada, a classe passa-a e não a executa.
+</note>
+
+A função retorna __true__ caso a operação tenha corrido com êxito, e __false__ caso tenha ocorrido algum erro.
+<note warning>
+Possibilidades de Erro:
+  * Os argumentos não estarem devidamente preenchidos
+  * A opção de verificar a função estar activada e a função não existir
+  * O função já estar anexada ao mesmo evento.
+</note>
+=== Exemplo ===
+<code php>
+<?php
+require("Events.php");
+
+function function_1 (){
+    echo "Function_1"
+}
+
+function function_4 (){
+    echo "Function_4";
+}
+
+//Este exemplo vai funcionar
+Events::Attach("system.core.example", "function_1");
+
+
+//Este exemplo não vai funcionar porque a fiunção já foi anexada ao evento
+Events::Attach("system.core.example", "function_1");
+
+
+//Este exemplo vai funcionar pois o evento declarado é outro
+Events::Attach("system.core.teste", "function_1");
+
+//Este exemplo vai funcionar
+Events::Attach("system.core.example", "function_2");
+
+//Este exemplo não vai anexar a função e vai retornar false
+Events::Attach("system.core.example", "function_2", true);
+
+
+//Este exemplo apena vai anexar a function_4, no entanto vai retornar false
+Events::Attach("system.core.example", array("function_2", "function_3", "function_4", true);
+
+//Ao chamar a função Run, ele vai apenas executar a function_1, e deixar a function_2 do segundo exemplo de lado.
+Events::Run("system.core.echo");
+?>
+</code>
+
+==== Detach ====
+Esta função vai desanexar uma função ou mesmo remover um evento.
+
+<note>
+**boolean** Detach (**string** $event_name, [**string**|**array** $function_name = ""]) \\ \\
+  * **$string_name** - O nome do evento a apagar.
+  * **$function_name** - O nome da função a desanexar. Se não for declarado, a função apaga todo o evento. Pode ser apenas uma string ou um array com uma lista de funções a desanexar.
+</note>
+
+A função retorna __true__ caso execute com êxito e __false__ caso ocorra algum erro.
+<note warning>
+Possibilidades de Erro:
+  * O argumento **$event_name** não estar preenchido.
+  * O evento não existir.
+</note>
+
+=== Exemplo ===
+<code php>
+<?php
+require("Events.php");
+
+function function_1 (){
+    echo "Function_1"
+}
+
+function function_2 (){
+    echo "Function_2";
+}
+
+Events::Attach("system.core.example", "function_1");
+Events::Attach("system.core.example", "function_2");
+Events::Attach("system.core.example", "function_3");
+
+Events::Detach("system.core.example", "function_2");
+
+//Ao chamar a função Run, ele vai apenas executar a function_1, e deixar a function_3 de lado.
+Events::Run("system.core.echo");
+
+//Com esta função ele vai eliminar o evento "system.core.example"
+Events::Detach("system.core.example");
+
+//Ao chamar a função Run desta vez, ele não vai executar nenhuma função e vai retornar false, pois o evento não existe (foi apagado)
+Events::Run("system.core.echo");
+
+?>
+</code>
+
+==== Run ====
+Esta função vai executar todas as funções associadas a um determinado evento.
+
+<note>
+**boolean** Run(**string** $event_name, [**array** $paramsList = ""]) \\ \\
+  * **$event_name** - O nome do evento a executar.
+  * **$paramsList** - Um array com parâmetros a passar para as funções.
+<note warning>Tem de ter cuidado ao usar os parâmetros, pois se uma função não tiver os parâmetros correspondentes, o PHP dará erro! </note>
+</note>
+
+A função retorna __true__ caso execute com êxito e __false__ caso ocorra algum erro.
+<note warning>
+Possibilidades de erro:
+  * Os parâmetros não estarem devidamente preenchidos
+  * O evento declarado não existir.
+<note tip>Funções que não existam, mas estejam anexadas ao evento não dão origem a erros.</note>
+</note>
+
+==== Show ====
+Esta função mostra ou retorna os actuais eventos e as respectivas funções anexadas.
+
+<note>
+**boolean**|**string** Show ([**string** $event_name = "", [**string** $output]]) \\ \\
+  * **$event_name** - Nome do evento a mostrar. Se não for declarado, ou for deixado em branco, a função mostra todas as funções de todos os eventos.
+  * **$output** - Se for definido como true, a função imprime automaticamente para o ecrã. Se estiver definida como false retorna uma string.
+</note>
+
+A função retorna __true__ caso o argumento **$output** esteja igual a __true__ e tenha sido executada com êxito, retorna uma string caso o argumento **$output** esteja igual a **false** e tenha sido executada com êxito, ou retorna __false__ em caso de erro.
+
+<note warning>
+Possibilidades de erro:
+  * O evento declarado não existir.
+</note>
+
+=== Exemplo ===
+<code php>
+<?php
+require("Events.php");
+
+function function_1 (){
+    echo "Function_1"
+}
+
+function function_2 (){
+    echo "Function_2";
+}
+
+Events::Attach("system.core.example", "function_1");
+Events::Attach("system.core.example", "function_2");
+Events::Attach("system.core.example", "function_3");
+
+Events::Attach("system.core.teste", "function_1");
+
+//Esta função irá imprimir as quatro funções.
+Events::Show();
+
+//Esta função irá imprimir apenas uma função.
+Events::Show("system.core.teste");
+
+//Neste caso a variável $content irá ficar com a informação de apenas três funções
+$content = Events::Show("system.core.example", false);
+
+//Neste caso, a função vai retornar false (erro) pois o evento não existe
+$content = Events::Show("system.core.new_event");
+?>
+</code>
+
+==== Exist ====
+Esta função verifica so um determinado evento existe, ou se uma determinada função lhe está anexada.
+
+<note>
+**boolean** Exist(**string** $event_name, [**string** $function_name = ""])
+  * **$event_name** - O nome do evento a verificar se existe.
+  * **$function_name** - O nome da função a verificar se está anexada ao evento.
+</note>
+A função retorna true se o evento existir, e se a função estiver declarada a ele. Retorna false se o evento não existir ou a função não estiver declarada a ele.
+
+=== Exemplo ===
+<code php>
+<?php
+
+require("Events.php");
+
+
+Events::Attach("some_event", "some_function");
+Events::Attach("some_event", "other_function");
+
+//Como o evento existe, vai retornar true
+echo Events::Exist("some_event");
+
+//Como o evento existe, e a função está anexada a ele, vai retornar true
+echo Events::Exist("some_event", "some_function");
+
+//Como o evento não existe, e apesar de a função existir, ele vai retornar false
+echo Events::Exist("other_event", "some_function");
+
+//Devido à função não estar anexada ao evento, ele vai retornar false
+echo Events::Exist("some_event", "function_1");
+?>
+</code>
+
+==== getList ====
+A função **getList()** retorna o array com os eventos e as respectivas funções anexadas.
+
+<note warning>Devem-se sempre usar as funções disponibilizadas pela classe para realizar acções que tenham a haver com o array, tais como verificar se a função existe, pois a sua estrutura pode mudar a qualquer versão e a sua aplicação pode deixar de funcionar.</note>
+
+==== Disable/Enable ====
+As funções **Disable()**/**Enable()** desabilitam/habilitam, respectivamente, o funcionamento da classe.
+
+<note tip>
+Algumas funções não são afectada por esta funcionalidade. Essas funções são:
+  * Exist()
+  * getList()
+  * getlastError()
+  * clearErrorsLog()
+</note>
+
+=== Exemplo ===
+<code php>
+<?php
+
+require("Events.php");
+
+//Esta função vai funcionar
+Events::Attach("some_event", "some_function");
+
+Events::Disable();
+
+//Esta função não vai funcionar
+Events::Run("some_event");
+
+//Esta função também não vai funcionar
+Events::Attach("some_event", "other_function");
+
+Events::Enable();
+
+//Esta função vai retornar false porque a função  não está anexada, e portanto, não vai fazer nada
+Events::Detach("some_event", "other_function");
+
+//Esta função apenas vai correr a função "some_function"
+Events::Run("some_event");
+?>
+</code>
