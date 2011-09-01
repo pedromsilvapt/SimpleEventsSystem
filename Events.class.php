@@ -32,7 +32,7 @@
  
  *
  
- * SimpleEventSystem - a class to emulate events in PHP.
+ * SimpleEventsSystem - a class to emulate events in PHP.
  
  * 
  
